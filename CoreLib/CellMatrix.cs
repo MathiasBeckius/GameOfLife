@@ -1,5 +1,3 @@
-using System.Data;
-
 namespace CoreLib;
 
 public class CellMatrix
@@ -45,6 +43,15 @@ public class CellMatrix
                     count++;
             }
         return count;
+    }
+
+    public CellMatrix Clone()
+    {
+        var newMatrix = new CellMatrix((uint)RowCount, (uint)ColumnCount);
+        foreach (var row in Enumerable.Range(0, RowCount))
+            foreach (var column in Enumerable.Range(0, ColumnCount))
+                newMatrix[row, column] = matrix[row][column];
+        return newMatrix;
     }
 
     private int ValidateRow(int row) =>

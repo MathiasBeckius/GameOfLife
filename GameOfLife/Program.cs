@@ -1,7 +1,6 @@
 ﻿// See https://aka.ms/new-console-template for more information
 Console.WriteLine("Hello, World!");
 
-var foo = new CoreLib.CircularArray<CoreLib.CircularArray<int>>(0);
 var twoDimensionalArray = new CoreLib.CircularArray<CoreLib.CircularArray<int>>(3);
 for (var i = 0; i < twoDimensionalArray.Length; i++)
     twoDimensionalArray[i] = new CoreLib.CircularArray<int>(3);
