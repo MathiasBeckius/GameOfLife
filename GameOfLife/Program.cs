@@ -1,10 +1,10 @@
-﻿var matrix = new CoreLib.CellMatrix(35, 70);
-var offsetX = 15;
-matrix[0, 1 + offsetX] = CoreLib.Cell.CreateLiveCell();
-matrix[1, 2 + offsetX] = CoreLib.Cell.CreateLiveCell();
-matrix[2, 0 + offsetX] = CoreLib.Cell.CreateLiveCell();
-matrix[2, 1 + offsetX] = CoreLib.Cell.CreateLiveCell();
-matrix[2, 2 + offsetX] = CoreLib.Cell.CreateLiveCell();
+﻿using GameOfLife;
+
+var matrix = new CoreLib.CellMatrix(35, 70);
+
+matrix.CreateGlider(10, 15);
+matrix.CreateGlider(20, 60);
+
 var offsetY = 3;
 matrix[offsetY + 10, 8] = CoreLib.Cell.CreateLiveCell();
 matrix[offsetY + 10, 9] = CoreLib.Cell.CreateLiveCell();
@@ -15,7 +15,7 @@ matrix[offsetY + 11, 11] = CoreLib.Cell.CreateLiveCell();
 matrix[offsetY + 10, 12] = CoreLib.Cell.CreateLiveCell();
 matrix[offsetY + 10, 13] = CoreLib.Cell.CreateLiveCell();
 offsetY = 10;
-offsetX = 10;
+var offsetX = 10;
 matrix[offsetY + 15, 0 + offsetX] = CoreLib.Cell.CreateLiveCell();
 matrix[offsetY + 15, 1 + offsetX] = CoreLib.Cell.CreateLiveCell();
 matrix[offsetY + 15, 2 + offsetX] = CoreLib.Cell.CreateLiveCell();
@@ -28,6 +28,7 @@ matrix[offsetY + 19, 0 + offsetX] = CoreLib.Cell.CreateLiveCell();
 matrix[offsetY + 19, 1 + offsetX] = CoreLib.Cell.CreateLiveCell();
 matrix[offsetY + 19, 2 + offsetX] = CoreLib.Cell.CreateLiveCell();
 
+var iteration = 1;
 while (true)
 {
     Console.Clear();
@@ -43,6 +44,8 @@ while (true)
     foreach (var column in Enumerable.Range(0, matrix.ColumnCount))
         lineRow.Append('-');
     Console.WriteLine(lineRow.ToString());
+    Console.WriteLine($"Iteration #{iteration}");
     Console.ReadLine();
     matrix = CoreLib.PatternGenerator.GenerateNewPattern(matrix);
+    iteration++;
 }
